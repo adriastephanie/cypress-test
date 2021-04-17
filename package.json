@@ -1,0 +1,23 @@
+{
+  "name": "cypress-test",
+  "version": "1.0.0",
+  "description": "cypress test",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^7.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adriastephanie/cypress-test.git"
+  },
+  "author": "adria stephanie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adriastephanie/cypress-test/issues"
+  },
+  "homepage": "https://github.com/adriastephanie/cypress-test#readme"
+}
