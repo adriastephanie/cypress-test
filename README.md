@@ -12,7 +12,7 @@ Install Cypress via npm: [cypress](https://cypress.io/) to install de
 npm install cypress --save-dev
 ```
 
-via npm:
+via yarn:
 
 
 ```bash
