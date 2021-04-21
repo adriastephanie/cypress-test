@@ -10,6 +10,7 @@ const locators = {
     MENU: {
         SETTING: '[data-test=menu-settings]',
         CONTA: '[href="/contas"]',
+        RESET: '[href="/reset"]',
 
     },
     

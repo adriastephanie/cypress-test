@@ -34,3 +34,9 @@ Cypress.Commands.add('login', (user, passwd) => {
     cy.get(loc.LOGIN.MESSAGE).should('contain', 'Bem vindo, Adria!')
 
 })
+
+Cypress.Commands.add('resetApp', () => {
+    cy.get(loc.MENU.SETTING).click()
+    cy.get(loc.MENU.RESET).click()
+
+})

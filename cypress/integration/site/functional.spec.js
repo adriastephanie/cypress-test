@@ -5,6 +5,7 @@ import loc from '../../support/locators'
 describe('Should test a functional level', () => {
     before(() => {
         cy.login()
+        cy.resetApp()
       
     })
 
