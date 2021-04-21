@@ -6,7 +6,9 @@
   "dependencies": {
     "cypress": "^7.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cypress-xpath": "^1.6.2"
+  },
   "scripts": {
     "test": "test"
   },
