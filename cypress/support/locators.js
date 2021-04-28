@@ -18,9 +18,16 @@ const locators = {
         NOME: '[data-test=nome]',
         BTN_SALVAR: '.btn',
         XP_ALTERAR_CONTA: "//table//td[contains(., 'Conta de teste 1')]/..//i[@class='far fa-edit']",
-        
 
 
+    },
+
+    MOVIMENTACAO: {
+        MENU_MOVIMENTACAO: '[data-test=menu-movimentacao]',
+        DESCRICAO: '#descricao',
+        VALOR: '[data-test=valor]',
+        INTERESSADO: '#envolvido',
+        BTN_SALVAR: '.btn-primary'
 
     }
 
