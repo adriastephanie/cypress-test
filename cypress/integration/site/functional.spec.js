@@ -36,9 +36,19 @@ describe('Should test a functional level', () => {
         cy.get(loc.CONTA.BTN_SALVAR).click({force: true})
         cy.get(loc.LOGIN.MESSAGE).should('contain', 'code 400')
 
-
-
     })
+
+    it('should create transaction', () => {
+
+        cy.get(loc.MOVIMENTACAO.MENU_MOVIMENTACAO).click()
+        cy.get(loc.MOVIMENTACAO.DESCRICAO).type('Movimentação 1')
+        cy.get(loc.MOVIMENTACAO.VALOR).type('120')
+        cy.get(loc.MOVIMENTACAO.INTERESSADO).type('Maria Clara')
+        cy.get(loc.MOVIMENTACAO.BTN_SALVAR).click()
+        cy.get('.toast-message').should('contain', 'Movimentação inserida com sucesso!')
+    
+    })
+    
 
 } )
 
