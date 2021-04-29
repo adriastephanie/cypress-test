@@ -5,11 +5,11 @@ jobs:
  runs-on: ubuntu-latest
  container: cypress/browsers:node12.18.3-chrome87-ff82
  steps:
- — name: Checkout
+ — name: actions/checkout@v2
  uses: actions/checkout@v2
 # Install NPM dependencies, cache them correctly
  # and run all Cypress tests
- — name: Cypress run
+ — name: cypress run
  uses: cypress-io/github-action@v2
  with:
  # Specify Browser since container image is compile with Firefox
