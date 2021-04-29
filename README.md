@@ -1,5 +1,6 @@
 # Cypress Test
 
+end-to-end 
 ## _Test project using cypress_
 
 ✨ End-to-end testing workshop with Cypress
