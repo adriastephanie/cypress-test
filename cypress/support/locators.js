@@ -8,6 +8,7 @@ const locators = {
     },
 
     MENU: {
+        HOME: '[data-test=menu-home]',
         SETTING: '[data-test=menu-settings]',
         CONTA: '[href="/contas"]',
         RESET: '[href="/reset"]',
@@ -26,8 +27,15 @@ const locators = {
         MENU_MOVIMENTACAO: '[data-test=menu-movimentacao]',
         DESCRICAO: '#descricao',
         VALOR: '[data-test=valor]',
+        CONTA: '[data-test=conta]',
+        STATUS: '[data-test=status]',
         INTERESSADO: '#envolvido',
         BTN_SALVAR: '.btn-primary'
+
+    },
+
+    SALDO: {
+        FN_XP_SALDO_CONTA: nome => `//td[contains(., '${nome}')]/../td[2]`,
 
     }
 
