@@ -10,7 +10,7 @@
     "cypress-xpath": "^1.6.2"
   },
   "scripts": {
-    "test": "cypress run"
+    "test": "Cypress run"
   },
   "repository": {
     "type": "git",
