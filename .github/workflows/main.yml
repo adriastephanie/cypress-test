@@ -1,17 +1,29 @@
-name: Cypress Tests
+name: E2E tests
 
-on: [push]
+on:
+      push:
+        branches:
+          - master
+      pull_request:
+        types: [opened, synchronize, reopened]
+        branches:
+          - master
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: actions/checkout@v1
         with:
-        run: npm install
-          start: npm cypress run
+          build: npm run build
+          start: npm start
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      - name: Run E2E test
+        uses: cypress-io/github-action@v1
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+        with:
+          config: baseUrl=https://barrigareact.wcaquino.me/
