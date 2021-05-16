@@ -23,5 +23,7 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       - name: Run E2E test
         uses: cypress-io/github-action@v1
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
           config: baseUrl=https://barrigareact.wcaquino.me/
