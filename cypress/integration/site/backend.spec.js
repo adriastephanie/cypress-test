@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import '../../support/commands'
+
 describe('Should test a functional level', () => {
     before(() => {
         //cy.resetApp()
@@ -7,15 +9,7 @@ describe('Should test a functional level', () => {
     })
 
     it('Should create an account', () => {
-        cy.request({
-            method: 'POST',
-            url: 'https://barrigarest.wcaquino.me/signin',
-            body: {
-                email: "adria@teste.com", 
-                senha: "123", 
-                redirecionar: false
-            }
-        }).its('body.token').should('not.be.empty')
+        cy.getToken('adria@teste.com', '123')
             .then(token => {
             cy.request({
                 url: 'https://barrigarest.wcaquino.me/contas',
