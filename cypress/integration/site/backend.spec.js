@@ -2,7 +2,7 @@
 
 import '../../support/commands'
 
-describe('Should test a functional level', () => {
+describe('Should test a BACKEND level', () => {
 
     let token
 
