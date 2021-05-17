@@ -3,14 +3,18 @@
 import '../../support/commands'
 
 describe('Should test a functional level', () => {
+
+    let token
+
     before(() => {
-        //cy.resetApp()
+        cy.getToken('adria@teste.com', '123')
+        .then(tkn => {
+            token = tkn
+        })
       
     })
 
     it('Should create an account', () => {
-        cy.getToken('adria@teste.com', '123')
-            .then(token => {
             cy.request({
                 url: 'https://barrigarest.wcaquino.me/contas',
                 method: 'POST',
@@ -19,7 +23,6 @@ describe('Should test a functional level', () => {
                     nome: 'Conta via request'
                 }
             }).as('response')
-        })
 
         cy.get('@response').then(res => {
             expect(res.status).to.be.equal(201)
