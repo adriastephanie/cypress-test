@@ -19,7 +19,7 @@ describe('Should test a BACKEND level', () => {
 
     it('Should create an account', () => {
             cy.request({
-                url: 'https://barrigarest.wcaquino.me/contas',
+                url: '/contas',
                 method: 'POST',
                 headers: { Authorization: `JWT ${token}` },
                 body: {
@@ -34,12 +34,32 @@ describe('Should test a BACKEND level', () => {
         })
     })
 
-/*     it('update an account', () => {
+    it.only('update an account', () => {
+        cy.request({
+            method:'GET',
+            url: '/contas',
+            headers: { Authorization: `JWT ${token}` },
+            qs: {
+                nome: 'Conta para alterar'
+            }
 
+        }).then(res => {
+            cy.request({
+                url: `https://barrigarest.wcaquino.me/contas/${res.body[0].id}`,
+                method: 'PUT',
+                headers: { Authorization: `JWT ${token}` },
+                body: {
+                    nome: 'conta modificada 123'
+                }
+            }).as('response')
+    
+            cy.get('@response').its('status').should('be.equal', 200)
+
+        })
 
     })
 
-    it('should not create account with same name', () => {
+    /* it('should not create account with same name', () => {
   
 
     })
@@ -54,8 +74,8 @@ describe('Should test a BACKEND level', () => {
 
     it('test remove a transaction', () => {
 
-    })
-     */
+    }) */
 
 } )
 
+611117

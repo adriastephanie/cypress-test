@@ -44,7 +44,7 @@ Cypress.Commands.add('resetApp', () => {
 Cypress.Commands.add('getToken', (user, passwd) => {
     cy.request({
         method: 'POST',
-        url: 'https://barrigarest.wcaquino.me/signin',
+        url: '/signin',
         body: {
             email: "adria@teste.com", 
             senha: "123", 
@@ -61,7 +61,7 @@ Cypress.Commands.add('resetRest', () => {
     cy.getToken('adria@teste.com', '123').then(token => {
         cy.request({
             method: 'GET',
-            url: 'https://barrigarest.wcaquino.me/reset',
+            url: '/reset',
             headers: { Authorization: `JWT ${token}` },
         })
 
