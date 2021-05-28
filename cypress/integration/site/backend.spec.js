@@ -18,14 +18,14 @@ describe('Should test a BACKEND level', () => {
     })
 
     it('Should create an account', () => {
-            cy.request({
-                url: '/contas',
-                method: 'POST',
-                headers: { Authorization: `JWT ${token}` },
-                body: {
-                    nome: 'Conta via request'
-                }
-            }).as('response')
+        cy.request({
+            url: '/contas',
+            method: 'POST',
+            headers: { Authorization: `JWT ${token}` },
+            body: {
+                nome: 'Conta via request'
+            }
+        }).as('response')
 
         cy.get('@response').then(res => {
             expect(res.status).to.be.equal(201)
@@ -45,7 +45,7 @@ describe('Should test a BACKEND level', () => {
 
         }).then(res => {
             cy.request({
-                url: `https://barrigarest.wcaquino.me/contas/${res.body[0].id}`,
+                url: `/contas/${res.body[0].id}`,
                 method: 'PUT',
                 headers: { Authorization: `JWT ${token}` },
                 body: {
@@ -54,17 +54,30 @@ describe('Should test a BACKEND level', () => {
             }).as('response')
     
             cy.get('@response').its('status').should('be.equal', 200)
-
         })
 
     })
 
-    /* it('should not create account with same name', () => {
-  
+    it.only('should not create account with same name', () => {
+        cy.request({
+            url: '/contas',
+            method: 'POST',
+            headers: { Authorization: `JWT ${token}` },
+            body: {
+                nome: 'Conta mesmo nome'
+            },
+            failOnStatusCode: false
+        }).as('response')
+
+        cy.get('@response').then(res => {
+            console.log(res)
+            expect(res.status).to.be.equal(400)
+            expect(res.body.error).to.be.equal('Já existe uma conta com esse nome!')
+        })
 
     })
 
-    it('test should create transaction', () => {
+   /*  it('test should create transaction', () => {
     
     })
 
@@ -74,8 +87,6 @@ describe('Should test a BACKEND level', () => {
 
     it('test remove a transaction', () => {
 
-    }) */
+    })  */
 
-} )
-
-611117
+})
