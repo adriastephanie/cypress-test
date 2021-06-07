@@ -19,7 +19,7 @@ describe('Should test a BACKEND level', () => {
 
     it('Should create an account', () => {
             cy.request({
-                url: 'https://barrigarest.wcaquino.me/contas',
+                url: '/contas',
                 method: 'POST',
                 headers: { Authorization: `JWT ${token}` },
                 body: {
@@ -34,18 +34,70 @@ describe('Should test a BACKEND level', () => {
         })
     })
 
-/*     it('update an account', () => {
+    it('update an account', () => {
+        cy.request({
+            method:'GET',
+            url: '/contas',
+            headers: { Authorization: `JWT ${token}` },
+            qs: {
+                nome: 'Conta para alterar'
+            }
 
+        }).then(res => {
+            cy.request({
+                url: `/contas/${res.body[0].id}`,
+                method: 'PUT',
+                headers: { Authorization: `JWT ${token}` },
+                body: {
+                    nome: 'conta modificada 123'
+                }
+            }).as('response')
+    
+            cy.get('@response').its('status').should('be.equal', 200)
+        })
 
     })
 
     it('should not create account with same name', () => {
-  
+        cy.request({
+            url: '/contas',
+            method: 'POST',
+            headers: { Authorization: `JWT ${token}` },
+            body: {
+                nome: 'Conta mesmo nome'
+            },
+            failOnStatusCode: false
+        }).as('response')
+
+        cy.get('@response').then(res => {
+            console.log(res)
+            expect(res.status).to.be.equal(400)
+            expect(res.body.error).to.be.equal('Já existe uma conta com esse nome!')
+        })
 
     })
 
     it('test should create transaction', () => {
-    
+        cy.getContaByName('Conta para movimentacoes')
+            .then(contaId => {
+                cy.request({
+                    url: '/transacoes',
+                    method: 'POST',
+                    headers: { Authorization: `JWT ${token}` },
+                    body: {
+                        conta_id: contaId,
+                        data_pagamento: "07/06/2021",
+                        data_transacao: "07/06/2021",
+                        descricao: "transição",
+                        envolvido: "Maria clara camargo",
+                        status: true,
+                        tipo: "REC",
+                        valor: "123"
+                    }
+                }).as('response')
+            })
+        cy.get('@response').its('status').should('be.equal', 201)
+        cy.get('@response').its('body.id').should('exist')
     })
 
     it('test should get balance', () => {
@@ -54,8 +106,6 @@ describe('Should test a BACKEND level', () => {
 
     it('test remove a transaction', () => {
 
-    })
-     */
+    })  
 
-} )
-
+})

@@ -4,13 +4,18 @@
   "description": "cypress test",
   "main": "index.js",
   "dependencies": {
-    "cypress": "^7.1.0"
+    "cypress": "^7.1.0",
+    "dayjs": "^1.10.5",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
-    "cypress-xpath": "^1.6.2"
+    "allure-commandline": "^2.13.8",
+    "cypress-xpath": "^1.6.2",
+    "mocha-allure-reporter": "^1.4.0"
   },
   "scripts": {
     "test": "Cypress run"
+    
   },
   "repository": {
     "type": "git",

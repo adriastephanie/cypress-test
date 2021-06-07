@@ -44,11 +44,11 @@ Cypress.Commands.add('resetApp', () => {
 Cypress.Commands.add('getToken', (user, passwd) => {
     cy.request({
         method: 'POST',
-        url: 'https://barrigarest.wcaquino.me/signin',
+        url: '/signin',
         body: {
             email: "adria@teste.com", 
-            senha: "123", 
-            redirecionar: false
+            redirecionar: false,
+            senha: "123"
         }
     }).its('body.token').should('not.be.empty')
     .then(token => {
@@ -61,10 +61,25 @@ Cypress.Commands.add('resetRest', () => {
     cy.getToken('adria@teste.com', '123').then(token => {
         cy.request({
             method: 'GET',
-            url: 'https://barrigarest.wcaquino.me/reset',
+            url: '/reset',
             headers: { Authorization: `JWT ${token}` },
         })
 
     })
 
+})
+
+Cypress.Commands.add('getContaByName', nome => {
+    cy.getToken('adria@teste.com', '123').then(token => {
+        cy.request({
+            method:'GET',
+            url: '/contas',
+            headers: { Authorization: `JWT ${token}` },
+            qs: {
+                nome: 'Conta para alterar'
+            }
+        }).then(res => {
+            return res.body[0].id
+        })
+    })
 })
