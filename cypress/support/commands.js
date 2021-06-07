@@ -47,8 +47,8 @@ Cypress.Commands.add('getToken', (user, passwd) => {
         url: '/signin',
         body: {
             email: "adria@teste.com", 
-            senha: "123", 
-            redirecionar: false
+            redirecionar: false,
+            senha: "123"
         }
     }).its('body.token').should('not.be.empty')
     .then(token => {
