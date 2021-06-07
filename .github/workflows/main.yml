@@ -26,4 +26,4 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         with:
-          config: baseUrl=https://barrigareact.wcaquino.me/
+          config: baseUrl=https://barrigarest.wcaquino.me
