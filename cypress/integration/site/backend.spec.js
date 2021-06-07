@@ -77,7 +77,7 @@ describe('Should test a BACKEND level', () => {
 
     })
 
-   /*  it('test should create transaction', () => {
+    it('test should create transaction', () => {
     
     })
 
@@ -87,6 +87,6 @@ describe('Should test a BACKEND level', () => {
 
     it('test remove a transaction', () => {
 
-    })  */
+    })  
 
 })
