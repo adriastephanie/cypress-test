@@ -16,7 +16,7 @@ describe('Should test a BACKEND level', () => {
     beforeEach(() => {
         cy.resetRest()
     })
-
+    
     it('Should create an account', () => {
             cy.request({
                 url: 'https://barrigarest.wcaquino.me/contas',
@@ -34,7 +34,7 @@ describe('Should test a BACKEND level', () => {
         })
     })
 
-    it('update an account', () => {
+/*     it('update an account', () => {
         cy.request({
             method:'GET',
             url: '/contas',
@@ -106,6 +106,6 @@ describe('Should test a BACKEND level', () => {
 
     it('test remove a transaction', () => {
 
-    })  
+    })  */ 
 
 })
