@@ -47,8 +47,8 @@ Cypress.Commands.add('getToken', (user, passwd) => {
         url: '/signin',
         body: {
             email: "adria@teste.com", 
-            redirecionar: false,
-            senha: "123"
+            senha: "123", 
+            redirecionar: false
         }
     }).its('body.token').should('not.be.empty')
     .then(token => {
@@ -56,7 +56,6 @@ Cypress.Commands.add('getToken', (user, passwd) => {
     })
 
 })
-
 Cypress.Commands.add('resetRest', () => {
     cy.getToken('adria@teste.com', '123').then(token => {
         cy.request({
