@@ -34,7 +34,7 @@ describe('Should test a BACKEND level', () => {
         })
     })
 
-    it.only('update an account', () => {
+    it('update an account', () => {
         cy.request({
             method:'GET',
             url: '/contas',
@@ -58,7 +58,7 @@ describe('Should test a BACKEND level', () => {
 
     })
 
-    it.only('should not create account with same name', () => {
+    it('should not create account with same name', () => {
         cy.request({
             url: '/contas',
             method: 'POST',
@@ -78,7 +78,26 @@ describe('Should test a BACKEND level', () => {
     })
 
     it('test should create transaction', () => {
-    
+        cy.getContaByName('Conta para movimentacoes')
+            .then(contaId => {
+                cy.request({
+                    url: '/transacoes',
+                    method: 'POST',
+                    headers: { Authorization: `JWT ${token}` },
+                    body: {
+                        conta_id: contaId,
+                        data_pagamento: "07/06/2021",
+                        data_transacao: "07/06/2021",
+                        descricao: "transição",
+                        envolvido: "Maria clara camargo",
+                        status: true,
+                        tipo: "REC",
+                        valor: "123"
+                    }
+                }).as('response')
+            })
+        cy.get('@response').its('status').should('be.equal', 201)
+        cy.get('@response').its('body.id').should('exist')
     })
 
     it('test should get balance', () => {

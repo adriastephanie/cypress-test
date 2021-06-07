@@ -68,3 +68,18 @@ Cypress.Commands.add('resetRest', () => {
     })
 
 })
+
+Cypress.Commands.add('getContaByName', nome => {
+    cy.getToken('adria@teste.com', '123').then(token => {
+        cy.request({
+            method:'GET',
+            url: '/contas',
+            headers: { Authorization: `JWT ${token}` },
+            qs: {
+                nome: 'Conta para alterar'
+            }
+        }).then(res => {
+            return res.body[0].id
+        })
+    })
+})
