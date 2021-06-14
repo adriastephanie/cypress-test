@@ -5,6 +5,16 @@ end-to-end
 
 ✨ End-to-end testing workshop with Cypress
 
+## Project status
+ 
+
+🚧  Cypress 🚀 UNDER CONSTRUCTION...  🚧
+
+## 🛠 Tech
+
+- [Node.js](https://nodejs.org/en/)
+- [Cypress](https://www.cypress.io/)
+
 ## Installation
 
 Install Cypress via npm: [cypress](https://cypress.io/) to install de
@@ -26,6 +36,12 @@ run:
 ```bash
 npx cypress open
 ```
+
+## Features
+
+- [x] End-to-End
+- [x] Backend
+- [ ] Server (Mock)
 
 
 ## License
