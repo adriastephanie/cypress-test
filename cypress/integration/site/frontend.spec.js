@@ -119,7 +119,7 @@ describe('Should test a functional level', () => {
 
     })
 
-    it('should not create account with same name', () => {
+    /* it('should not create account with same name', () => {
         cy.acessarMenuConta()
    
         cy.get(loc.CONTA.NOME).type('Conta alterada')
@@ -151,7 +151,7 @@ describe('Should test a functional level', () => {
         cy.get(loc.MENU.EXTRATO).click()
         cy.xpath(loc.EXTRATO.FN_XP_REMOVE_ELEMENT('Movimentação 1')).click()
 
-    })
+    }) */
     
 
 })
