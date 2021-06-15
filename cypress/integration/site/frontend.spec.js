@@ -2,33 +2,11 @@
 
 import loc from '../../support/locators'
 import '../../support/commandsConta'
+import MockEnv from '../../support/mockEnv'
 
 describe('Should test a functional level', () => {
-    before(() => {
-        cy.intercept('POST', '/signin*', {
-            statusCode: 200,
-            body: {
-                id:1444,
-                nome: 'Adria',
-                token:'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9token.fake',
-            },
-        }).as('signin')
-
-        cy.intercept('GET', '/saldo*', {
-            statusCode: 200,
-            body: [{
-                conta_id: 9998,
-                conta:'Conta fake',
-                saldo:'1500.00',
-            },
-            {
-                conta_id: 9999,
-                conta:'Conta com movimentacao',
-                saldo:25.00,
-
-            }]
-        }).as('saldo')
-
+    beforeEach(() => {
+        MockEnv()
         cy.login('Adria@fakeuser.com', 'fakeuser12345')
         //cy.resetApp()
     })
@@ -95,7 +73,7 @@ describe('Should test a functional level', () => {
 
     })
 
-    it.only('update an account', () => {
+    it('update an account', () => {
         cy.intercept('GET', '/contas*', {
             statusCode: 200,
             body: [{
