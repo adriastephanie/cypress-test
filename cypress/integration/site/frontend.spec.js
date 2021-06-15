@@ -90,9 +90,6 @@ describe('Should test a functional level', () => {
             
         }).as('contasSave')
 
-
-
-
         cy.inserirConta('Teste de conta Fake')
         cy.get(loc.LOGIN.MESSAGE).should('contain', 'Conta inserida com sucesso!')
 
