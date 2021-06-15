@@ -5,7 +5,7 @@ import '../../support/commandsConta'
 
 describe('Should test a functional level', () => {
     before(() => {
-        cy.login()
+        cy.login('adria@teste.com', '123')
         cy.resetApp()
       
     })
