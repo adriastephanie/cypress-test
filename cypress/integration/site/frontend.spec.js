@@ -32,6 +32,9 @@ describe('Should test a functional level', () => {
         cy.login('Adria@fakeuser.com', 'fakeuser12345')
         cy.resetApp()
     })
+    after(() => {
+        cy.clearLocalStorage()
+    })
 
     it.only('Should create an account', () => {
         cy.acessarMenuConta()
