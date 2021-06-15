@@ -36,7 +36,7 @@ describe('Should test a functional level', () => {
         cy.clearLocalStorage()
     })
 
-    it.only('Should create an account', () => {
+    it('Should create an account', () => {
         cy.intercept('GET', '/contas*', {
             statusCode: 200,
             body: [{
@@ -95,13 +95,47 @@ describe('Should test a functional level', () => {
 
     })
 
-    it('update an account', () => {
+    it.only('update an account', () => {
+        cy.intercept('GET', '/contas*', {
+            statusCode: 200,
+            body: [{
+                id:1,
+                nome: 'Conta Fake',
+                visivel:true,
+                usuario_id:14237,
+            },
+            {
+                id:2,
+                nome: 'Teste de conta Fake',
+                visivel:true,
+                usuario_id:14234,
+
+            },
+            {
+                id:3,
+                nome:'Conta de teste 1',
+                visivel:true,
+                usuario_id:14237,
+
+            }]
+        }).as('contas')
+
+        cy.intercept('PUT', '/contas/**', {
+            statusCode: 200,
+            body: {
+                id:3,
+                nome: 'Conta alterada Fake',
+                visivel:true,
+                usuario_id:4,
+            },
+        }).as('contas')
+
         cy.get(loc.MENU.SETTING).click()
         cy.get(loc.MENU.CONTA).click()
         cy.xpath(loc.CONTA.XP_ALTERAR_CONTA).click()
         cy.get(loc.CONTA.NOME)
             .clear()
-            .type('Conta alterada')
+            .type('Conta Teste')
         cy.get(loc.CONTA.BTN_SALVAR).click({force: true})
         cy.get('.toast-message').should('contain', 'Conta atualizada com sucesso!')
 
