@@ -17,28 +17,83 @@ describe('Should test a functional level', () => {
         cy.intercept('GET', '/saldo*', {
             statusCode: 200,
             body: [{
-                'conta_id': 9998,
-                'conta':"Conta fake",
-                'saldo':"1500.00",
+                conta_id: 9998,
+                conta:'Conta fake',
+                saldo:'1500.00',
             },
             {
-                'conta_id': 9999,
-                'conta':"Conta com movimentacao",
-                'saldo':"25.00",
+                conta_id: 9999,
+                conta:'Conta com movimentacao',
+                saldo:25.00,
 
             }]
         }).as('saldo')
 
         cy.login('Adria@fakeuser.com', 'fakeuser12345')
-        cy.resetApp()
+        //cy.resetApp()
     })
     after(() => {
         cy.clearLocalStorage()
     })
 
     it.only('Should create an account', () => {
+        cy.intercept('GET', '/contas*', {
+            statusCode: 200,
+            body: [{
+                id:123456,
+                nome: 'Conta para alterar fake',
+                visivel:true,
+                usuario_id:14237,
+            },
+            {
+                id:123457,
+                nome:'Conta com movimentacao',
+                visivel:true,
+                usuario_id:14237,
+
+            }]
+        }).as('contas')
+
+        cy.intercept('POST', '/contas*', {
+            statusCode: 201,
+            body: {
+                id:640940,
+                nome: 'Teste de conta Fake',
+                visivel:true,
+                usuario_id:14237,
+            },
+        }).as('SaveContas')
+
         cy.acessarMenuConta()
-        cy.inserirConta('Conta de teste 1')
+
+        cy.intercept('GET', '/contas*', {
+            statusCode: 200,
+            body: [{
+                id:123456,
+                nome: 'Conta para alterar fake',
+                visivel:true,
+                usuario_id:14237,
+            },
+            {
+                id:123457,
+                nome:'Conta com movimentacao',
+                visivel:true,
+                usuario_id:14237,
+            },
+            {
+                id:640940,
+                nome: 'Teste de conta Fake',
+                visivel:true,
+                usuario_id:14237,
+
+            }]
+            
+        }).as('contasSave')
+
+
+
+
+        cy.inserirConta('Teste de conta Fake')
         cy.get(loc.LOGIN.MESSAGE).should('contain', 'Conta inserida com sucesso!')
 
     })
@@ -90,5 +145,5 @@ describe('Should test a functional level', () => {
     })
     
 
-} )
+})
 
