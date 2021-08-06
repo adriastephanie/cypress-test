@@ -15,7 +15,6 @@
   },
   "scripts": {
     "test": "Cypress run"
-    
   },
   "repository": {
     "type": "git",

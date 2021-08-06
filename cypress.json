@@ -1,4 +1,6 @@
 {
   "baseUrl": "https://barrigarest.wcaquino.me",
-  "projectId": "fb82ov"
+  "projectId": "fb82ov",
+  "video": false,
+  "screenshotOnRunFailure": false
 }
