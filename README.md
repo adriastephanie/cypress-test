@@ -1,5 +1,7 @@
 # Cypress Test
 
+![Build status](https://github.com/adriastephanie/cypress-test/actions/workflows/main.yml/badge.svg)
+
 end-to-end 
 ## _Test project using cypress_
 
