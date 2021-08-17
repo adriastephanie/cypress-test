@@ -38,9 +38,19 @@ yarn add cypress --dev
 
 run:
 
-
+test run in headless
 ```bash
-npx cypress open
+npn run test
+```
+
+test with report junit
+```bash
+npm run test:report
+```
+
+delete report 
+```bash
+npm run delete:report
 ```
 
 ## Features
