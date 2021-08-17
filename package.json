@@ -14,7 +14,10 @@
     "mocha-allure-reporter": "^1.4.0"
   },
   "scripts": {
-    "test": "Cypress run"
+    "test": "cypress run",
+    "test:report": "npm run test mocha test --reporter cypress-junit-reporter",
+    "delete:report": "rm cypress/reports/* || true",
+    "prereport": "npm run delete:report"
   },
   "repository": {
     "type": "git",
