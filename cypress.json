@@ -2,5 +2,12 @@
   "baseUrl": "https://barrigarest.wcaquino.me",
   "projectId": "fb82ov",
   "video": false,
-  "screenshotOnRunFailure": false
+  "screenshotOnRunFailure": false,
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "./cypress/reports/junit.[hash].xml",
+    "testsuitesTitle": "Suite-cypress-titulo",
+    "rootSuiteTitle":"cypress",
+    "toConsole": true
+  }
 }
