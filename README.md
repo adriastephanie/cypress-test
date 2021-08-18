@@ -25,6 +25,10 @@ Install Cypress via npm: [cypress](https://cypress.io/) to install de
 npm install cypress --save-dev
 ```
 
+```bash
+npm install mocha-junit-reporter --save-dev
+```
+
 via yarn:
 
 
@@ -34,9 +38,19 @@ yarn add cypress --dev
 
 run:
 
-
+test run in headless
 ```bash
-npx cypress open
+npn run test
+```
+
+test with report junit
+```bash
+npm run test:report
+```
+
+delete report 
+```bash
+npm run delete:report
 ```
 
 ## Features

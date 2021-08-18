@@ -5,16 +5,24 @@
   "main": "index.js",
   "dependencies": {
     "cypress": "^7.1.0",
+    "cypress-mochawesome-reporter": "^2.2.1",
+    "cypress-multi-reporters": "^1.5.0",
     "dayjs": "^1.10.5",
+    "junit-report-merger": "^3.0.1",
+    "mocha": "^9.0.3",
     "moment": "^2.29.1"
   },
   "devDependencies": {
     "allure-commandline": "^2.13.8",
     "cypress-xpath": "^1.6.2",
-    "mocha-allure-reporter": "^1.4.0"
+    "mocha-allure-reporter": "^1.4.0",
+    "mocha-junit-reporter": "^2.0.0"
   },
   "scripts": {
-    "test": "Cypress run"
+    "test": "cypress run",
+    "test:report": "npm run test mocha test --reporter cypress-junit-reporter",
+    "delete:report": "rm cypress/reports/* || true",
+    "prereport": "npm run delete:report"
   },
   "repository": {
     "type": "git",
